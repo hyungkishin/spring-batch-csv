@@ -1,4 +1,4 @@
-package com.example.batch;
+package com.example.batch.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +16,10 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
+
     private String phone;
 
     public Person(String name, String phone) {
