@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import java.util.Date;
 
+@EnableConfigurationProperties
 @SpringBootApplication
 public class SpringBatchCsvApplication implements CommandLineRunner {
 
@@ -17,7 +19,7 @@ public class SpringBatchCsvApplication implements CommandLineRunner {
     private JobLauncher jobLauncher;
 
     @Autowired
-    private Job importContactJob;
+    private Job importRestaurantJob;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBatchCsvApplication.class, args);
@@ -25,7 +27,7 @@ public class SpringBatchCsvApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        jobLauncher.run(importContactJob, new JobParametersBuilder()
+        jobLauncher.run(importRestaurantJob, new JobParametersBuilder()
                 .addLong("startAt", System.currentTimeMillis())
                 .toJobParameters());
     }
