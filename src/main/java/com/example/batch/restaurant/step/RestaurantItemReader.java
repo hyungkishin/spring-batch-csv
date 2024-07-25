@@ -5,18 +5,9 @@ import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-
-import java.beans.PropertyEditorSupport;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 public class RestaurantItemReader {
@@ -27,7 +18,7 @@ public class RestaurantItemReader {
 
         return new FlatFileItemReaderBuilder<RestaurantDto>()
                 .name("personItemReader")
-                .resource(new ClassPathResource("restaurants.csv"))
+                .resource(new ClassPathResource("fulldata.csv"))
                 .strict(true) // strict 모드 설정
                 .linesToSkip(1)
                 .delimited()
